@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -80,7 +81,8 @@ public final class UnionRelauncher {
         // Launch the game (or the next wrapper class in the chain, anyway)
         Thread.currentThread().setContextClassLoader(urlClassLoader);
         final Class<?> mainClass = Class.forName(mainClassName, true, urlClassLoader);
-        final MethodHandles.Lookup lookup = MethodHandles.lookup();
-        lookup.unreflect(mainClass.getMethod("main", String[].class)).invokeExact(args);
+        MethodHandles.publicLookup()
+            .findStatic(mainClass, "main", MethodType.methodType(void.class, String[].class))
+            .invokeExact(args);
     }
 }
