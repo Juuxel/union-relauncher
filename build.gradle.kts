@@ -8,11 +8,11 @@ version = "0.0.0"
 
 repositories {
     mavenCentral()
-    maven("https://maven.neoforged.net/releases/")
+    maven("https://maven.minecraftforge.net/")
 }
 
 dependencies {
-    compileOnly("cpw.mods:securejarhandler:2.1.24")
+    compileOnly("net.minecraftforge:securemodules:2.2.7")
 }
 
 tasks.withType<JavaCompile> {
