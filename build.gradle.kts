@@ -6,6 +6,11 @@ plugins {
 group = "io.github.juuxel"
 version = "0.0.0"
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 repositories {
     mavenCentral()
     maven("https://maven.minecraftforge.net/")
@@ -36,5 +41,32 @@ tasks.jar {
 publishing {
     publications.register<MavenPublication>("maven") {
         from(components["java"])
+
+        pom {
+            name.set("Union Relauncher")
+            description.set("A main class wrapper for Minecraft Forge to combine mod paths")
+            url.set("https://github.com/Juuxel/union-relauncher")
+
+            licenses {
+                license {
+                    name.set("Mozilla Public License Version 2.0")
+                    url.set("https://www.mozilla.org/en-US/MPL/2.0/")
+                }
+            }
+
+            developers {
+                developer {
+                    id.set("Juuxel")
+                    name.set("Juuxel")
+                    email.set("juuzsmods@gmail.com")
+                }
+            }
+
+            scm {
+                connection.set("scm:git:git://github.com/Juuxel/union-relauncher.git")
+                developerConnection.set("scm:git:ssh://github.com:Juuxel/union-relauncher.git")
+                url.set("https://github.com/Juuxel/union-relauncher")
+            }
+        }
     }
 }
