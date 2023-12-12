@@ -21,7 +21,7 @@ dependencies {
     compileOnly("net.minecraftforge:securemodules:2.2.7")
 }
 
-tasks.withType<JavaCompile> {
+tasks.withType<JavaCompile>().configureEach {
     options.release.set(17)
 }
 
@@ -37,6 +37,11 @@ tasks.jar {
     manifest {
         attributes("Main-Class" to mainClass)
     }
+}
+
+tasks.withType<AbstractArchiveTask>().configureEach {
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
 }
 
 publishing {
