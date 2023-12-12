@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * The main class. See module-level documentation for more details.
+ * The main class. See {@linkplain io.github.juuxel.unionrelauncher module-level documentation} for more details.
  */
 public final class UnionRelauncher {
     private static final String MAIN_CLASS_PROPERTY = "unionRelauncher.mainClass";
