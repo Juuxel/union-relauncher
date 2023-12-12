@@ -1,6 +1,7 @@
 plugins {
     java
     `maven-publish`
+    signing
 }
 
 group = "io.github.juuxel"
@@ -68,5 +69,11 @@ publishing {
                 url.set("https://github.com/Juuxel/union-relauncher")
             }
         }
+    }
+}
+
+if (project.hasProperty("signing.keyId")) {
+    signing {
+        sign(publishing.publications)
     }
 }
