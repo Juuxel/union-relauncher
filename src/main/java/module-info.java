@@ -32,4 +32,5 @@
  */
 module io.github.juuxel.unionrelauncher {
     requires cpw.mods.securejarhandler;
+    exports juuxel.unionrelauncher;
 }
