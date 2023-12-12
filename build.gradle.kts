@@ -75,6 +75,14 @@ publishing {
             }
         }
     }
+
+    repositories {
+        maven {
+            name = "ossrh"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials(PasswordCredentials::class)
+        }
+    }
 }
 
 if (project.hasProperty("signing.keyId")) {
