@@ -30,6 +30,9 @@ public final class UnionRelauncher {
     private static final String MAIN_CLASS_PROPERTY = "unionRelauncher.mainClass";
     private static final String MOD_CLASSES_ENV = "MOD_CLASSES";
 
+    private UnionRelauncher() {
+    }
+
     public static void main(final String[] args) throws Throwable {
         final String mainClassName = Objects.requireNonNull(System.getProperty(MAIN_CLASS_PROPERTY), "no main class defined");
         final String modClasses = Objects.requireNonNullElse(System.getenv(MOD_CLASSES_ENV), "");
