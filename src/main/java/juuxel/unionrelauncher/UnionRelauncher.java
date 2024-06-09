@@ -63,6 +63,9 @@ public final class UnionRelauncher {
             .filter(uri -> !allModUris.contains(uri))
             .collect(Collectors.toSet());
 
+        // Replace original classpath with filtered classpath
+        System.setProperty("java.class.path", String.join(":", () -> filteredClasspath.stream().map(a -> (CharSequence) a.getPath()).iterator()));
+
         // Create unions for mods
         final Set<URI> modUris = mods.values()
             .stream()
