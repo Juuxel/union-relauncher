@@ -64,7 +64,11 @@ public final class UnionRelauncher {
             .collect(Collectors.toSet());
 
         // Replace original classpath with filtered classpath
-        System.setProperty("java.class.path", filteredClasspath.stream().map(URI::getPath).collect(Collectors.joining(File.pathSeparator)));
+        final String classpathString = filteredClasspath.stream()
+            .map(Path::of)
+            .map(Path::toString)
+            .collect(Collectors.joining(File.pathSeparator));
+        System.setProperty("java.class.path", classpathString);
 
         // Create unions for mods
         final Set<URI> modUris = mods.values()
